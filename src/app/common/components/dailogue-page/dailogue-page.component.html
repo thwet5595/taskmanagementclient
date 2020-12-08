@@ -1,0 +1,38 @@
+<!-- <h2 mat-dialog-title>Retailer: {{data.retailer}}</h2> -->
+<ngx-loading [show]="loading"></ngx-loading>
+
+<mat-dialog-content>
+    <!-- <pdf-viewer [src]="fileUpload" style="display: block;"></pdf-viewer> -->
+    <ngx-extended-pdf-viewer
+    [src]="fileUpload"
+    backgroundColor="#ffffff"
+    [height]="'190vh'"
+    [useBrowserLocale]="true"
+    [showDownloadButton]="false"
+    [filenameForDownload]="fileName"
+    [showSidebarButton]	= "false" 
+    [showHandToolButton]="false"
+    [showRotateButton]="false"
+    [showSpreadButton]="false"
+    
+    [showSecondaryToolbarButton]="false"
+    [showFindButton]="false"
+    [showOpenFileButton]="false"
+    [showBookmarkButton]="false"
+    [showPresentationModeButton]="false"
+    (pagesLoaded)="onPagesLoaded($event)"
+   >
+  </ngx-extended-pdf-viewer>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <!-- <button class="mat-raised-button"
+            (click)="close()">
+        Close
+    </button>
+    <button class="mat-raised-button"
+            (click)="download()">
+        Download
+    </button> -->
+    
+</mat-dialog-actions>

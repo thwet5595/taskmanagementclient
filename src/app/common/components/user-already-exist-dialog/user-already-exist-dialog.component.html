@@ -1,0 +1,15 @@
+<div class="dialog-container">
+    <div mat-dialog-title>
+        <h3>User Already Exist!</h3>
+    </div>
+    <div mat-dialog-content>
+        <p>This user is already login in another place.</p>
+        <p>Do you want to Log Out Of All Sessions?</p>
+    </div>
+    <div mat-dialog-actions class="action-container">
+        <div class="action-row">
+            <button mat-button (click)="dialogRef.close(false)" mat-raised-button>Cancel</button>
+            <button mat-raised-button (click)="dialogRef.close(true)" color="primary">Ok</button>
+        </div>
+    </div>
+</div>

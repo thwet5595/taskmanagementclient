@@ -1,0 +1,70 @@
+.complete {
+    width: 50% !important;
+    width: auto !important;
+    margin-right: 7px !important;
+    padding: 0px 40px;
+    background-color: #4caf50;
+}
+.delete {
+    width: 50% !important;
+    width: auto !important;
+    margin-right: 7px !important;
+    padding: 0px 40px;
+    background-color: #f44336;
+}
+
+.cardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.dash-tab-group i {
+    padding: 5px;
+    color: #3F51B5;
+  }
+
+  .dash-tab-group {
+    margin-top: 10px !important;
+  }
+  
+.card3 {
+    width: 30%;
+  }
+  
+.cardList .mat-card:first-child {
+    flex: 2 1 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mat-raised-button {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 66px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 2px;
+    overflow: visible;
+    transform: translate3d(0, 0, 0);
+    transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}

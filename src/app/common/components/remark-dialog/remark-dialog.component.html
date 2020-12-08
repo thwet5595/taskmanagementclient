@@ -1,0 +1,25 @@
+<div class="dialog-container">
+  <div mat-dialog-title>
+      <h3>{{data.title}}</h3>
+  </div>
+  <div mat-dialog-content>
+      <p>{{data.content}}</p>
+      <form [formGroup]="form">
+      <mat-form-field class="full-width" style="width: 400px;">
+        <input required matInput [(ngModel)]="remark" placeholder="Remark" 
+        formControlName="remark" />
+        <div *ngIf="form.controls['remark'].invalid && (form.controls['remark'].dirty || form.controls['remark'].touched)" class="error">
+            <div *ngIf="form.controls['remark'].errors.required">
+            Remark is required.
+          </div>
+        </div>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions class="action-container">
+      <div class="action-row">
+          <button mat-button (click)="save()" mat-raised-button class="buttonColor">Ok</button>
+          <button mat-raised-button (click)="dialogRef.close(false)">Close</button>
+      </div>
+  </div>
+</div>

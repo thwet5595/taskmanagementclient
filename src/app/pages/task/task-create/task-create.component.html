@@ -1,0 +1,43 @@
+<mat-toolbar class="cust_ToolBar">
+    <span>Create Task</span>
+</mat-toolbar>
+<mat-card class="card">
+    <mat-card-content>
+        <form #form="ngForm" [formGroup]="createTaskForm" class="createTask-form">
+            <mat-form-field class="full-width">
+                <mat-label>Title</mat-label>
+                <input required matInput formControlName="title" class="form-control" />
+                <mat-error *ngIf="createTaskForm.get('title').errors?.required">
+                    <strong>Title</strong> is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label>Expected Date</mat-label>
+                <input required readonly matInput [matDatepicker]="picker" formControlName="expDate"
+                    class="form-control">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="createTaskForm.get('expDate').errors?.required">
+                    <strong>Expected Date</strong> is required
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="full-width" flex-direaction="column">
+                <mat-label>Priority</mat-label>
+                <mat-select required (selectionChange)="priorityChange($event)" formControlName="priority">
+                    <mat-option *ngFor="let item of priorityList" [value]="item">
+                        {{item}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="createTaskForm.get('priority').errors?.required">
+                    <strong>Priority</strong> is required
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button [disabled]="createTaskForm.invalid" (click)="createTask()"
+            class="buttonColor">Create</button>
+    </mat-card-actions>
+</mat-card>

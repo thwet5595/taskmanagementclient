@@ -1,0 +1,71 @@
+<mat-card>
+    <mat-card-content>
+        <div class="cardList">
+            <mat-card>
+                <button class="delete" style="width: auto!important;padding: 0px 10px;" mat-raised-button
+                    (click)="deleteTask()" color="primary" matTooltip="Delete Selected Tasks">
+                    <mat-icon aria-hidden="false">highlight_off</mat-icon>
+                </button>
+
+                <ag-grid-angular style="width: 100%; height: 370px;" class="ag-theme-balham" [gridOptions]="gridOptions"
+                    [columnDefs]="taskDefs" (rowClicked)="onRowClickedForTask($event)" [overlayNoRowsTemplate]="noRowsTemplate"
+                    (gridReady)="taskGridReady($event)">
+                </ag-grid-angular>
+
+                <!-- <ag-grid-angular style="width: 100%; height: 370px;" class="ag-theme-balham" [gridOptions]="gridOptions"
+                [columnDefs]="retailerResendDef" [frameworkComponents]="frameworkComponents"
+                (gridReady)="retailerResendGridReady($event)">
+            </ag-grid-angular> -->
+
+            </mat-card>
+
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="card" *ngIf="isEdit">
+    <div class="cardList" style="width: 100%;">
+        <mat-card style="width: 99%;">
+            <mat-card-subtitle>
+                <b><u> Task Details </u></b>
+            </mat-card-subtitle>
+
+            <mat-form-field class="full-width" flex-direaction="column">
+                <mat-label>Title</mat-label>
+                <input required readonly matInput [(ngModel)]="title" class="form-control" />
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" flex-direaction="column">
+                <mat-label>Completed Status</mat-label>
+                <mat-select required readonly (selectionChange)="compStatusChange($event)" [(ngModel)]="selectedStatus"
+                    [disabled]="true">
+                    <mat-option *ngFor="let item of compStatusList" [value]="item">
+                        {{item}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" *ngIf="isComplete">
+                <mat-label>Completed Date</mat-label>
+                <input readonly matInput [matDatepicker]="picker" [(ngModel)]="compDate" class="form-control"
+                    [(ngModel)]="compDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width" flex-direaction="column">
+                <mat-label>Priority</mat-label>
+                <mat-select readonly required (selectionChange)="priorityChange($event)" [(ngModel)]="selectedTask"
+                    [disabled]="true">
+                    <mat-option *ngFor="let item of priorityList" [value]="item">
+                        {{item}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </mat-card>
+    </div>
+</mat-card>

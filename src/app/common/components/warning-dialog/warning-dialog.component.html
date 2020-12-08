@@ -1,0 +1,14 @@
+<div class="dialog-container">
+  <div mat-dialog-title>
+      <h3>Warning!</h3>
+  </div>
+  <div mat-dialog-content>
+      <p><font size="3" color="red">{{data.content}}</font> is empty. System will generate automatically.</p>
+  </div>
+  <div mat-dialog-actions class="action-container">
+      <div class="action-row">
+          <button mat-button (click)="dialogRef.close(true)" mat-raised-button class="buttonColor">Confirm</button>
+          <button mat-raised-button (click)="dialogRef.close(false)">Cancel</button>
+      </div>
+  </div>
+</div>

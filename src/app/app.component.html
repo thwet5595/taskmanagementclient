@@ -1,0 +1,41 @@
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="toggleSideNav()" [disabled]="isFirstLogin()" [hidden]="!isLogged()">
+      <mat-icon style="color:#004384">menu</mat-icon>
+    </button>
+    <img class="icon" src="../assets/task_logo.PNG"
+      style="max-width: 30%; min-width: 16%; max-height: 95%; align-items:flex-start;"
+      [ngStyle.lt-sm]="{'max-width': '80%;', 'min-width':'33%;', 'max-height': '95%;', 'align-items':'flex-start'}">
+    <span class="spacer"></span>
+    <div fxShow fxHide.lt-sm>
+      <a mat-button (click)="logout()" [hidden]="!isLogged()" matTooltip="Logout"><i class="fa fa-sign-out"
+          aria-hidden="true" style="font-size:29px;color:red"></i></a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 5 : 0">
+  <mat-sidenav [hidden]="hideMenu()" #drawer role="navigation" [mode]="mobileQuery.matches ? 'over' : 'side'"
+    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
+    style="background-color: rgba(0, 0, 0, 0.12); transform: none; visibility: visible;" class="sidenav"
+    [ngStyle.lt-sm]="{'background-color':'#fff;'}">
+    <mat-nav-list>
+      <mat-list-item><i class="fa fa-shopping-basket"></i><a mat-list-item routerLink='/task-create'>Create Task</a>
+      </mat-list-item>
+      <mat-list-item><i class="fa fa-shopping-basket"></i><a mat-list-item routerLink='/task-list'>InComplete Task
+          List</a></mat-list-item>
+      <mat-list-item><i class="fa fa-shopping-basket"></i><a mat-list-item routerLink='/comp-task-list'>Complete Task
+          List</a></mat-list-item>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content [ngStyle.lt-sm]="{'min-height': '85vh;'}" ngStyle.lt-md="min-height: 86vh;">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<footer class="page-footer" style="background-color: #0000001f !important;transform: none;visibility: visible;">
+  <!-- <div class="footer-copyright text-center py-2"><i class="fa fa-copyright" style="padding: 5px;color: #004384;"></i>
+    <a href="https://www.kbzbank.com/" style="color: #004384;"> kbzbank.com</a>
+  </div> -->
+</footer>

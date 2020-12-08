@@ -1,0 +1,40 @@
+<mat-toolbar class="cust_ToolBar">
+  <span>LOGIN</span>
+</mat-toolbar>
+<mat-card class="card">
+  <mat-card-content>
+      <ngx-loading [show]="loading"></ngx-loading>
+      <form [formGroup]="loginForm" class="login-form" (keydown.enter)="tryLogin()">
+          <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input required matInput formControlName="email" class="form-control" autocomplete="off" />
+              <mat-error *ngIf="loginForm.get('email').errors?.required">
+                  <strong>Email</strong> is required
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('email').errors?.email || loginForm.get('email').errors?.pattern">
+                  <strong>Email</strong> must be a valid email address
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input required matInput type="password" formControlName="password" #passwordInput autocomplete="off" />
+
+              <mat-error *ngIf="loginForm.get('password').errors?.required">
+                  <strong>Password</strong> is required
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('password').errors?.minlength">
+                  <strong>Password</strong> must be at least 8 characters
+              </mat-error>
+
+              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"
+                  (click)="showPassword()" *ngIf="passwordFlag"></span>
+              <span toggle="#password-field" class="fa fa-eye-slash field-icon toggle-password"
+                  (click)="showPassword()" *ngIf="!passwordFlag"></span>
+          </mat-form-field>
+
+      </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button [disabled]="loginForm.invalid" (click)="tryLogin()" class="buttonColor">LOGIN</button>
+  </mat-card-actions>
+</mat-card>

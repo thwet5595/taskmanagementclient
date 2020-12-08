@@ -1,0 +1,14 @@
+<div class="dialog-container">
+    <div mat-dialog-title>
+        <h3>Session Expired!</h3>
+    </div>
+    <div mat-dialog-content>
+        <p>Your session is expired. Do you want to re-login!</p>
+    </div>
+    <div mat-dialog-actions class="action-container">
+        <div class="action-row">
+            <button mat-button (click)="dialogRef.close(false)" mat-raised-button>Cancel</button>
+            <button mat-raised-button (click)="dialogRef.close(true)" color="primary">Ok</button>
+        </div>
+    </div>
+</div>
